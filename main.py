@@ -4,6 +4,7 @@ grid = [["-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-"]
 #grid = [["-"] * 7] * 6 #broken who tf knows
 
 def displayGrid():
+  print("\n" * 1000)
   count = 0
   for x in range(6):
     print(grid[count])
@@ -65,29 +66,42 @@ def menu():
 
 def move():
   dataType = "number"
+  print("It's",currentPlayer,"'s Turn!'")
   column=validCheck(dataType)
   return (column)
 
 def makeMove(column, currentPlayer):
-  count = 5
-  for x in range (6):
-    if grid[count][column] == "-":
-      grid[count][column] = currentPlayer
-      break
-    else:
-      count = count - 1
+  moveDone = False
+  while moveDone == False:
+      count = 5
+      for x in range (6):
+          if grid[0][column] == "R" or grid[0][column] == "Y":
+            displayGrid()
+            print("That column is full!")
+            column = move()
+            column = column - 1
+          elif grid[count][column] == "-":
+            grid[count][column] = currentPlayer
+            break
+          else:
+            count = count - 1
+      moveDone = True
   displayGrid()
+
+def checkWinner():
+  
         
 #Start of Program
+winCondition = False
 currentPlayer = menu()
-column = move()
-column = column - 1
-while winCondition = False:
+while winCondition == False:
+  column = move()
+  column = column - 1
   makeMove(column, currentPlayer)
   if currentPlayer == "R":
-      currentPlayer == "Y"
-  else:
-      currentPlayer == "R"
+    currentPlayer = "Y"
+  elif currentPlayer =="Y":
+    currentPlayer = "R"
 
 
 #print (currentPlayer)
