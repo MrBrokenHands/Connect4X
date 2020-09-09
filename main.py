@@ -1,5 +1,8 @@
+#global check
 #Grid
 grid = [["-" * 7] * 6]
+def displayGrid():
+    print(grid)
 
 #ValidityChecker
 def validCheck(dataType):
@@ -11,6 +14,7 @@ def validCheck(dataType):
         try:
           check = ""
           check = int(input("Pick a Column (1-7)\n"))
+          print()
           valid = True
         except:
           print("Input is not a valid",dataType)
@@ -18,6 +22,7 @@ def validCheck(dataType):
         try:
           check = ""
           check = str(input("Pick a Colour (R or Y)\n"))
+          print()
           valid = True
         except:
             print("Please enter a colour (R or Y)\n")
@@ -36,38 +41,42 @@ def validCheck(dataType):
           if check >= 1 and check <= 7:
             break
           else:
-            print("111Input is not a valid",dataType) #needs fixing int
+            print("Input is not a valid",dataType)
             valid = False
             continue
         except:
-          continue #needs fixing str
+          continue
     break
   return(check)
   
 #Menu
 def menu(): 
-    print("Connect 4 - Press the enter key to play")
+    print("The Lad's Connect 4 - Press the enter key to play")
     input()
     dataType = "colour"
-    currentPlayer = str(input("Red or Yellow?")) #Either set as "Y" or "R"
-    validCheck(currentPlayer)
-    print("currentPlayer")
-    currentPlayer = ""
+    currentPlayer = validCheck(dataType)
+    return(currentPlayer)
 
 def move():
   dataType = "number"
-  validCheck(dataType)
+  column=validCheck(dataType)
+  return (column)
 
-def checkMove(column):
+def checkMove(column, currentPlayer):
     for row in range(6):
-      if grid[row:column] == "-":
-          grid[row:column] = currentPlayer
-    print(grid)
+      print(row,column)
+      grid[1:column] = currentPlayer
+      #if grid[1:column] == "-":
+         # print("Cock")
+          #grid[1:column] = currentPlayer
+    displayGrid()
         
+#Start of Program
+currentPlayer = menu()
+column = move()
+checkMove(column, currentPlayer)
 
-#menu()
-column=move()
-checkMove(column)
+#print (currentPlayer)
 print("END OF PROGRAM")
 
 #James Worley and Tom Comrie 09/09/2020
