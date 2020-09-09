@@ -10,26 +10,37 @@ def validCheck(dataType):
       if dataType == "number":
         try:
           check = ""
-          check = int(input("Pick a Column (1-7)"))
+          check = int(input("Pick a Column (1-7)\n"))
           valid = True
         except:
-            print("coon")
+          print("Input is not a valid",dataType)
       elif dataType == "colour":
         try:
           check = ""
-          check = str(input("Pick a Colour"))
+          check = str(input("Pick a Colour (R or Y)\n"))
           valid = True
         except:
-            print("Please enter a ", dataType, " (R or Y)")
-      try:
-        if check >= 1 and check <= 7:
-          break
-        else:
-          print("Input is not valid ", dataType)
-          valid = False
-          continue
-      except:
-        print("Input is not valid ", dataType)
+            print("Please enter a colour (R or Y)\n")
+      if dataType == "colour":
+        try:
+          if check == "R" or check == "Y":
+            break
+          else:
+            print("Input is not a valid",dataType)
+            valid = False
+            continue
+        except:
+          print("Input is not a valid",dataType)
+      elif dataType == "number":
+        try:
+          if check >= 1 and check <= 7:
+            break
+          else:
+            print("111Input is not a valid",dataType) #needs fixing int
+            valid = False
+            continue
+        except:
+          continue #needs fixing str
     break
   return(check)
   
@@ -37,38 +48,21 @@ def validCheck(dataType):
 def menu(): 
     print("Connect 4 - Press the enter key to play")
     input()
+    dataType = "colour"
     currentPlayer = str(input("Red or Yellow?")) #Either set as "Y" or "R"
+    validCheck(currentPlayer)
+    print("currentPlayer")
+    currentPlayer = ""
 
 def move():
-  validCheck()
-  '''
-  valid = False
-  while True:
-    while valid == False:
-      try:
-        column = ""
-        column = int(input("Pick a Column (1-7)"))
-        valid = True
-      except:
-          print("Please enter a number")
-      try:
-        if column >= 1 and column <= 7:
-          break
-        else:
-          print("Input is not valid number")
-          valid = False
-          continue
-      except:
-        print("Input is not valid number")
-    break
-  return(column)
-  '''
+  dataType = "number"
+  validCheck(dataType)
 
 def checkMove(column):
     for row in range(6):
-      print(row)
-      if grid[row, column] == "-":
-          grid[row, column] = currentPlayer
+      if grid[row:column] == "-":
+          grid[row:column] = currentPlayer
+    print(grid)
         
 
 #menu()
