@@ -1,5 +1,5 @@
 #Grid
-grid = [["-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-"]]
+grid = [[" ", " ", " ", " ", " ", " ", " "], [" ", " ", " ", " ", " ", " ", " "], [" ", " ", " ", " ", " ", " ", " "], [" ", " ", " ", " ", " ", " ", " "], [" ", " ", " ", " ", " ", " ", " "], [" ", " ", " ", " ", " ", " ", " "]]
 
 #grid = [["-"] * 7] * 6 #broken who tf knows
 
@@ -80,7 +80,7 @@ def makeMove(column, currentPlayer):
             print("That column is full!")
             column = move()
             column = column - 1
-          elif grid[count][column] == "-":
+          elif grid[count][column] == " ":
             grid[count][column] = currentPlayer
             break
           else:
@@ -115,7 +115,6 @@ def checkWinner():
       for y in range(boardHeight - 3):
           if grid[x][y] == tile and grid[x+1][y+1] == tile and grid[x+2][y+2] == tile and grid[x+3][y+3] == tile:
               return True
-
   return False
         
 #Start of Program
@@ -125,11 +124,11 @@ while winCondition == False:
   column = move()
   column = column - 1
   makeMove(column, currentPlayer)
+  winCondition = checkWinner()
   if currentPlayer == "R":
     currentPlayer = "Y"
-  elif currentPlayer =="Y":
+  elif currentPlayer =="Y":   
     currentPlayer = "R"
-  winCondition = checkWinner()
 if currentPlayer == "R":
   currentPlayer = "Y"
 elif currentPlayer =="Y":
