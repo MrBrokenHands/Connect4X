@@ -68,7 +68,7 @@ def move():
   column=validCheck(dataType)
   return (column)
 
-def checkMove(column, currentPlayer):
+def makeMove(column, currentPlayer):
   count = 5
   for x in range (6):
     if grid[count][column] == "-":
@@ -82,7 +82,13 @@ def checkMove(column, currentPlayer):
 currentPlayer = menu()
 column = move()
 column = column - 1
-checkMove(column, currentPlayer)
+while winCondition = False:
+  makeMove(column, currentPlayer)
+  if currentPlayer == "R":
+      currentPlayer == "Y"
+  else:
+      currentPlayer == "R"
+
 
 #print (currentPlayer)
 print("END OF PROGRAM")
