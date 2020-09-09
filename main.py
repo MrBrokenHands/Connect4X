@@ -9,15 +9,25 @@ def menu():
 
 def move():
     while True:
-        column = input("Pick a Column (1-7)")
-        column = int(column)
-        if column >= 1 and <= 7:
-            continue
-        else:
+      while True:
+        try:
+          column = ""
+          column = int(input("Pick a Column (1-7)"))
+          break
+        except:
+          print("Please enter a number retard")
+        try:
+          if column >= 1 and column <= 7:
+            print("Yes")
             break
-    if grid
+          else:
+            print("Input is not valid")
+            continue
+        except:
+            print("not valid input")
+    #if grid
 
     
 menu()
-
+move()
 #James Worley and Tom Comrie 09/09/2020
