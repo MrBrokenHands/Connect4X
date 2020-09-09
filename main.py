@@ -1,8 +1,14 @@
-#global check
 #Grid
-grid = [["-" * 7] * 6]
+grid = [["-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-"], ["-", "-", "-", "-", "-", "-", "-"]]
+
+#grid = [["-"] * 7] * 6 #broken who tf knows
+
 def displayGrid():
-    print(grid)
+  count = 0
+  for x in range(6):
+    print(grid[count])
+    print()
+    count = count + 1
 
 #ValidityChecker
 def validCheck(dataType):
@@ -63,17 +69,19 @@ def move():
   return (column)
 
 def checkMove(column, currentPlayer):
-    for row in range(6):
-      print(row,column)
-      grid[1:column] = currentPlayer
-      #if grid[1:column] == "-":
-         # print("Cock")
-          #grid[1:column] = currentPlayer
-    displayGrid()
+  count = 5
+  for x in range (6):
+    if grid[count][column] == "-":
+      grid[count][column] = currentPlayer
+      break
+    else:
+      count = count - 1
+  displayGrid()
         
 #Start of Program
 currentPlayer = menu()
 column = move()
+column = column - 1
 checkMove(column, currentPlayer)
 
 #print (currentPlayer)
